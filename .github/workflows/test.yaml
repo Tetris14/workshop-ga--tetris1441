@@ -15,3 +15,20 @@ jobs:
       - name : Say Hellow world
         shell: bash
         run: echo Github actions workshop
+
+  unit-tests:
+    name: Run my unit-test
+    runs-on: ubuntu.20.4
+    container: docker://epitechcontent/epitest-docker
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run tests
+        shell: bash
+        run: make tests_run
+
+      - name: Get coverage
+        shell: bash
+        run: make coverage
